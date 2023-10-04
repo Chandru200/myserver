@@ -31,6 +31,7 @@ def logout_user(request):
     return JsonResponse({'msg': "logged out sucessfully"})
     print("logout called")
 
+@csrf_exempt
 def register(request):
     try:
         data = json.loads(request.body)

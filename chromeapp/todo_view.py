@@ -14,7 +14,7 @@ def get_all_todo(request):
             'id': todo.id,
             'name': todo.name,
             'description': todo.description,
-            'duedate': todo.duedate.strftime('%Y-%m-%d %H:%M:%S')
+            'duedate': todo.duedate.strftime("%d/%m/%Y %I:%M%p")
         }
         for todo in todos
     ]
@@ -30,7 +30,8 @@ def create_todo(request):
     todos.save()
     return JsonResponse({
         "status":True,
-        "msg":"sucessfully saved"
+        "msg":"sucessfully saved",
+        "id":todos.id
     })
 
 @csrf_exempt

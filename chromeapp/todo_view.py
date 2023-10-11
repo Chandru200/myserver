@@ -1,7 +1,7 @@
 from .models import Todo, WebsiteMonitor
 from django.http import JsonResponse
 import json
-import datetime
+from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -20,7 +20,7 @@ def get_all_todo(request):
     response["todos_list"] = todos_list
     try:
         website_data = WebsiteMonitor.objects.filter(
-            user=request.user.id, viewed_date=datetime.datetime.now().isoformat().split("T")[0])[0]
+            user=request.user.id, viewed_date=datetime.now().isoformat().split("T")[0])[0]
         response["view_time"] = website_data.view_time
 
     except Exception as e:
@@ -145,5 +145,5 @@ def append_array_dicts(dict_array):
 def convertStrToDateFromReq(date_str):
     date_str = date_str.strip("'")
     format = "%Y-%m-%d"
-    date = datetime.datetime.strptime(date_str, format).date()
+    date = datetime.strptime(date_str, format).date()
     return date

@@ -7,6 +7,7 @@ urlpatterns = [
     path('logout', views.logout_user),
     path('getuser', todo_view.get_all_todo),
     path("", views.home),
+    path("ProductivityMaster/PrivacyPolicy", views.privacypolicy),
     path('get_todos', todo_view.get_all_todo),
     path('create_todo', todo_view.create_todo),
     path('edit_todo', todo_view.edit_todo),

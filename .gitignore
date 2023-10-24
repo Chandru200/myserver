@@ -1,0 +1,4 @@
+/venv/*
+/myserver/bin/*
+/myserver/lib/*
+/myserver/lib64

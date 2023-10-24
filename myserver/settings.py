@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-rv&y=ux3*u*94)y@dyb&%!p3@2&z3ofpxcrcb3i)=^eh@f-n%b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['3.6.112.6']
 
 AUTH_USER_MODEL = 'chromeapp.CustomUser'
 

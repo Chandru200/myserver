@@ -2,3 +2,5 @@
 /myserver/bin/*
 /myserver/lib/*
 /myserver/lib64
+/migrations/*
+/__pycache__/*

@@ -144,6 +144,6 @@ def append_array_dicts(dict_array):
 
 def convertStrToDateFromReq(date_str):
     date_str = date_str.strip("'")
-    format = "%Y-%m-%d"
+    format = "%d/%m/%Y"
     date = datetime.strptime(date_str, format).date()
     return date

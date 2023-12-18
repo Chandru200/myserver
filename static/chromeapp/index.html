@@ -1,22 +1,24 @@
 {% load static %}
+{% load socialaccount %}
+{% providers_media_js %}.
 <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="utf-8">
-            <title>Login</title>
-        </head>
-        <body>
-            <p>Developing.....</p>
-            <button id="login">Login</button>
-            <button id="logout">Logout</button>
-            <button id="getuser">Getdata</button>
-            <b><label for="result">Translated Text</label></b>
-            <b><p id="result"></p></b>
-            <script type="text/javascript" src="{% static 'chromeapp/index.js' %}"></script>
-            <div>
-                <input type="email">Email</input>
-                <input type="password">Password</input>
-            </div>
-        </body>
-    </html>
-    
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+    </head>
+    <body>
+        <p>Developing.....</p>
+        <button id="login">Login</button>
+        <button id="logout">Logout</button>
+        <button id="getuser">Getdata</button>
+        <h1>{{user }}<h1>
+        <a href="{% provider_login_url "google" method="js_sdk" %}">GOOGLE LOGIN</a>
+        <a href="{% provider_login_url "google" method="oauth2" %}">GOOGLE LOGIN_2</a>
+        <script type="text/javascript" src="{% static 'chromeapp/index.js' %}"></script>
+        <div>
+            <input class="email" type="email">Email</input>
+            <input class="password" type="password">Password</input>
+        </div>
+    </body>
+</html>

@@ -39,11 +39,6 @@ function logout(){
 			headers: {
 			  "Content-Type": "application/json"
 			},
-			// body: JSON.stringify({
-			// 	"password":"test1",
-			// 	"email":"test1@gmail.com",
-			// 	"name":"test1"
-			// }),
 		  });
 		fetchRes.then(res =>
 			res.json()).then(d => {
@@ -59,8 +54,8 @@ function login(){
 			  "Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				"password":"new",
-				"email":"new@gmail.com",
+				"password":document.getElementsByClassName("password")[0].value,
+				"email":document.getElementsByClassName("email")[0].value,
 				"name":"new",
 				"fromchrome":0
 			}),
@@ -77,12 +72,7 @@ function getUser(){
 			method: "GET",	
 			headers: {
 			  "Content-Type": "application/json",
-			},
-			// body: JSON.stringify({
-			// 	"password":"test1",
-			// 	"email":"test1@gmail.com",
-			// 	"name":"test1"
-			// }),
+			}
 		  });
 		fetchRes.then(res =>
 			res.json()).then(d => {

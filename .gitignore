@@ -4,3 +4,5 @@
 /myserver/lib64
 /migrations/*
 /__pycache__/*
+/pro-m-env/
+.idea

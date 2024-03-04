@@ -9,13 +9,13 @@ class CustomUser(AbstractUser):
 
 
 class Todo(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE,)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, to_field='id')
     name = models.CharField(max_length=250)
     description = models.CharField(max_length=10485760)
     duedate = models.DateTimeField()
 
 
 class WebsiteMonitor(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE,)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, to_field='id')
     view_time = models.JSONField()
     viewed_date = models.DateField(blank=False, default=timezone.now)

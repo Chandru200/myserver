@@ -12,7 +12,7 @@ class CustomAuthenticationMiddleware:
         session_data = session.load()
         email_id = session_data.get('email')
         skip_authentication_middleware = [
-            '/login_user', '/register', '/', '/logout', "/ProductivityMaster/PrivacyPolicy"]
+            '/getcsrf','/login_user', '/register', '/', '/logout', "/ProductivityMaster/PrivacyPolicy"]
         if request.path not in skip_authentication_middleware:
             if session_key is None or email_id is None:
                     return JsonResponse({

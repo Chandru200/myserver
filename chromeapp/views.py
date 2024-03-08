@@ -15,7 +15,7 @@ def privacypolicy(request):
     return render(request, 'chromeapp/privacypolicy.html')
 
 
-@csrf_exempt
+# @csrf_exempt
 def login_user(request):
     from django.contrib.sessions.models import Session
     data = json.loads(request.body)
@@ -76,3 +76,8 @@ def custom_authenticate(email, password):
 def login(request,user):
     request.session['email'] = user.email
     return request.session
+
+def getcsrf(request):
+    from django.middleware import csrf
+    csrf_token = csrf.get_token(request)
+    return JsonResponse({'csrf_token': csrf_token})

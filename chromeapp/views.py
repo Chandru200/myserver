@@ -4,7 +4,6 @@ from .models import CustomUser
 from django.http import JsonResponse
 from django.db import IntegrityError
 import json
-from django.views.decorators.csrf import csrf_exempt
 
 
 def home(request):
@@ -15,7 +14,6 @@ def privacypolicy(request):
     return render(request, 'chromeapp/privacypolicy.html')
 
 
-# @csrf_exempt
 def login_user(request):
     from django.contrib.sessions.models import Session
     data = json.loads(request.body)
@@ -37,7 +35,6 @@ def logout_user(request):
     return JsonResponse({'msg': "logged out sucessfully"})
 
 
-@csrf_exempt
 def register(request):
     try:
         data = json.loads(request.body)

@@ -4,6 +4,7 @@
 /myserver/lib64
 /migrations/*
 /pro-m-env/
+/environment/
 .idea
 
 

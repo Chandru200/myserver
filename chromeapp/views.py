@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import  logout
 from .models import CustomUser
 from django.http import JsonResponse
 from django.db import IntegrityError
@@ -14,27 +14,26 @@ def home(request):
 def privacypolicy(request):
     return render(request, 'chromeapp/privacypolicy.html')
 
-
 @csrf_exempt
 def login_user(request):
-    print("came here1")
+    from django.contrib.sessions.models import Session
     data = json.loads(request.body)
     email = data['email']
     password = data['password']
     user = custom_authenticate(email=email, password=password)
     # user = authenticate(request, username="new", password="new")
     if user is not None:
-        login(request, user)
-        return JsonResponse({'msg': "logged in"})
+        session_id = login(request, user).session_key
+        response = JsonResponse({'msg': "logged in"})
+        response.set_cookie('sessionid', session_id)
+        return response
     else:
         return JsonResponse({'msg': "username or password is incorrect"})
 
-
+@csrf_exempt
 def logout_user(request):
     logout(request)
     return JsonResponse({'msg': "logged out sucessfully"})
-    print("logout called")
-
 
 @csrf_exempt
 def register(request):
@@ -44,6 +43,7 @@ def register(request):
         email = data['email']
         password = data['password']
         fromchrome = bool(data.get('fromchrome', False))
+
         user = CustomUser.objects.create_user(
             username=name, email=email, password=password, fromchrome=fromchrome)
         user.save()
@@ -61,7 +61,6 @@ def getuser(request):
 
 
 def custom_authenticate(email, password):
-    print("came here")
     try:
         user = CustomUser.objects.get(email=email)
     except CustomUser.DoesNotExist:
@@ -71,3 +70,12 @@ def custom_authenticate(email, password):
         return user
 
     return None
+
+def login(request,user):
+    request.session['email'] = user.email
+    return request.session
+
+def getcsrf(request):
+    from django.middleware import csrf
+    csrf_token = csrf.get_token(request)
+    return JsonResponse({'csrf_token': csrf_token})

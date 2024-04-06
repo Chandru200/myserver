@@ -4,7 +4,6 @@ import json
 from datetime import datetime
 from django.views.decorators.csrf import csrf_exempt
 
-
 def get_all_todo(request):
     response = {}
     todos = Todo.objects.filter(user=request.user.id)
@@ -28,7 +27,6 @@ def get_all_todo(request):
         response["view_time"] = {}
     return JsonResponse(response)
 
-
 @csrf_exempt
 def create_todo(request):
     data = json.loads(request.body)
@@ -43,7 +41,6 @@ def create_todo(request):
         "msg": "sucessfully saved",
         "id": todos.id
     })
-
 
 @csrf_exempt
 def edit_todo(request):
@@ -73,7 +70,6 @@ def edit_todo(request):
     })
 
 
-@csrf_exempt
 def delete_todo(request):
     Todo.objects.filter(user=request.user.id, id=request.GET["id"]).delete()
     return JsonResponse({
@@ -82,14 +78,12 @@ def delete_todo(request):
     })
 
 
-@csrf_exempt
 def delete_todo(request):
     Todo.objects.filter(user=request.user.id, id=request.GET["id"]).delete()
     return JsonResponse({
         "status": True,
         "msg": "sucessfully_deleted"
     })
-
 
 @csrf_exempt
 def set_view_time(request):

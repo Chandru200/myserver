@@ -10,12 +10,12 @@
             <button id="login">Login</button>
             <button id="logout">Logout</button>
             <button id="getuser">Getdata</button>
-            <b><label for="result">Translated Text</label></b>
             <b><p id="result"></p></b>
             <script type="text/javascript" src="{% static 'chromeapp/index.js' %}"></script>
             <div>
-                <input type="email">Email</input>
-                <input type="password">Password</input>
+                <input id="email" type="email">Email</input>
+                <input id="password" type="password">Password</input>
+                <h1>Login Status:<p id="status"></p></h1>
             </div>
         </body>
     </html>

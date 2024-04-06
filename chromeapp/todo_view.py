@@ -2,7 +2,7 @@ from .models import Todo, WebsiteMonitor
 from django.http import JsonResponse
 import json
 from datetime import datetime
-
+from django.views.decorators.csrf import csrf_exempt
 
 def get_all_todo(request):
     response = {}
@@ -27,7 +27,7 @@ def get_all_todo(request):
         response["view_time"] = {}
     return JsonResponse(response)
 
-
+@csrf_exempt
 def create_todo(request):
     data = json.loads(request.body)
     name = data['name']
@@ -42,7 +42,7 @@ def create_todo(request):
         "id": todos.id
     })
 
-
+@csrf_exempt
 def edit_todo(request):
 
     data = json.loads(request.body)
@@ -85,7 +85,7 @@ def delete_todo(request):
         "msg": "sucessfully_deleted"
     })
 
-
+@csrf_exempt
 def set_view_time(request):
     data = json.loads(request.body)
     view_time = data['view_time']

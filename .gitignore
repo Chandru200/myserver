@@ -4,6 +4,3 @@
 /myserver/lib64
 /migrations/*
 /__pycache__/*
-
-/environment/
-/pro-m-env/

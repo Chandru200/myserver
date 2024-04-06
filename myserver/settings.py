@@ -95,7 +95,6 @@ DATABASES = {
         "PORT": "5432",
     }
 }
-s
 
 
 # Password validation
